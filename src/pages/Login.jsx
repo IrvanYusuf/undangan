@@ -26,6 +26,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(formLogin);
     try {
       const response = await fetch(`${apiAuth}/login`, {
         method: "POST",
@@ -39,7 +40,9 @@ const Login = () => {
         }),
       });
 
+      console.log(response);
       const data = await response.json();
+      console.log(data);
 
       if (response.status === 400 || response.status === 401) {
         setErrMsg(data.message);
@@ -47,7 +50,7 @@ const Login = () => {
 
       if (response.status === 200) {
         setAuthToken(data.token);
-        navigate("/");
+        // navigate("/");
       }
       // localStorage.setItem("tes", 1);
       // navigate("/");

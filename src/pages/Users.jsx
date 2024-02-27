@@ -10,12 +10,13 @@ import * as yup from "yup";
 import { notify } from "@/lib/utils";
 import { ToastContainer } from "react-toastify";
 import { ScaleLoader } from "react-spinners";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import imgNotFound from "../assets/not-found.jpg";
 import ButtonEdit from "@/components/atoms/ButtonEdit";
 import ButtonDelete from "@/components/atoms/ButtonDelete";
 import ExpendedComponents from "@/components/atoms/ExpendedComponent";
 import TambahData from "@/components/organism/TambahData";
+import { useAuth } from "@/context/authContext";
 
 const Title = () => {
   return <h2 className="text-2xl font-semibold">Data List Tamu Undangan</h2>;
@@ -52,6 +53,12 @@ const Users = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { token } = useAuth();
+  const navigate = useNavigate();
+
+  if (!token) {
+    navigate("/login");
+  }
 
   // manggil api
   const getAllGuests = async () => {

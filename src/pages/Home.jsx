@@ -18,7 +18,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import imgNotFound from "../assets/not-found.jpg";
-import Status from "@/components/atoms/Status";
+import { useAuth } from "@/context/authContext";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,8 +33,15 @@ const Home = () => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const { token } = useAuth();
   // const page = searchParams.get("page");
   // const limit = searchParams.get("limit");
+
+  if (!token) {
+    navigate("/login");
+  }
+
+  console.log(token);
 
   const handleParams = (value) => {
     setSearchParams({ status: value });
