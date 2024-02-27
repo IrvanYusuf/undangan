@@ -40,9 +40,7 @@ const Login = () => {
         }),
       });
 
-      console.log(response);
       const data = await response.json();
-      console.log(data);
 
       if (response.status === 400 || response.status === 401) {
         setErrMsg(data.message);

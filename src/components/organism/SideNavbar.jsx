@@ -58,18 +58,11 @@ const SideNavbar = () => {
                   : "text-black flex gap-x-2 p-4 origin-left md:justify-start justify-center duration-200"
               }
             >
-              {/* <TooltipTrigger> */}
               <LayoutGrid data-state="closed" />
-              {/* </TooltipTrigger> */}
-              {/* {isOpen && (
-                    <TooltipContent side="right">Dashboard</TooltipContent>
-                  )} */}
               <span className={`font-medium ${isOpen && "hidden"}`}>
                 Dashboard
               </span>
             </NavLink>
-            {/* </Tooltip> */}
-            {/* <Tooltip> */}
             <NavLink
               to={"/users"}
               className={({ isActive }) =>
@@ -78,19 +71,13 @@ const SideNavbar = () => {
                   : "text-black flex gap-x-2 p-4 origin-left md:justify-start justify-center"
               }
             >
-              {/* <TooltipTrigger> */}
               <Users data-state="closed" />
-              {/* </TooltipTrigger> */}
-              {/* {!isOpen && (
-                    <TooltipContent side="right">Users</TooltipContent>
-                  )} */}
               <span
                 className={`font-medium ${isOpen && "hidden"} duration-200`}
               >
                 Users
               </span>
             </NavLink>
-            {/* </Tooltip> */}
             <NavLink
               className={"flex gap-x-2 p-4 origin-left"}
               onClick={handleLogout}
