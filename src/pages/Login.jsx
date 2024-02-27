@@ -50,7 +50,7 @@ const Login = () => {
 
       if (response.status === 200) {
         setAuthToken(data.token);
-        // navigate("/");
+        navigate("/");
       }
       // localStorage.setItem("tes", 1);
       // navigate("/");
