@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/logo.png";
-import { Button } from "../ui/button";
 import { ChevronLeft, LayoutGrid, LogOut, Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
 import { useWindowWidth } from "@react-hook/window-size";
+import { useAuth } from "@/context/authContext";
 
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const onlyWidth = useWindowWidth();
+  const { setAuthToken } = useAuth();
+
+  const handleLogout = () => {
+    setAuthToken(null);
+  };
 
   useEffect(() => {
     if (onlyWidth < 431) setIsOpen(true);
@@ -92,7 +91,10 @@ const SideNavbar = () => {
               </span>
             </NavLink>
             {/* </Tooltip> */}
-            <NavLink className={"flex gap-x-2 p-4 origin-left"} to={"/login"}>
+            <NavLink
+              className={"flex gap-x-2 p-4 origin-left"}
+              onClick={handleLogout}
+            >
               <LogOut className="rotate-180" />
               <span className={`font-medium ${isOpen && "hidden"}`}>
                 LogOut

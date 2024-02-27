@@ -52,8 +52,6 @@ const Login = () => {
         setAuthToken(data.token);
         navigate("/");
       }
-      // localStorage.setItem("tes", 1);
-      // navigate("/");
     } catch (error) {
       console.log(error);
     }
