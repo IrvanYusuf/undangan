@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/logo.png";
 import { ChevronLeft, LayoutGrid, LogOut, Users } from "lucide-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useWindowWidth } from "@react-hook/window-size";
 
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const onlyWidth = useWindowWidth();
-  const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   // navigate("/login");
-  //   localStorage.removeItem("token");
-  // };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   useEffect(() => {
     if (onlyWidth < 431) setIsOpen(true);
@@ -80,7 +78,7 @@ const SideNavbar = () => {
             </NavLink>
             <NavLink
               className={"flex gap-x-2 p-4 origin-left"}
-              // onClick={handleLogout}
+              onClick={handleLogout}
               to={"/login"}
             >
               <LogOut className="rotate-180" />
