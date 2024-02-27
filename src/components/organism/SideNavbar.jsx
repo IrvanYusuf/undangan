@@ -10,8 +10,8 @@ const SideNavbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // navigate("/login");
     localStorage.removeItem("token");
-    navigate("/login");
   };
 
   useEffect(() => {
@@ -81,6 +81,7 @@ const SideNavbar = () => {
             <NavLink
               className={"flex gap-x-2 p-4 origin-left"}
               onClick={handleLogout}
+              to={"/login"}
             >
               <LogOut className="rotate-180" />
               <span className={`font-medium ${isOpen && "hidden"}`}>
