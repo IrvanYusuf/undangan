@@ -41,8 +41,6 @@ const Home = () => {
     navigate("/login");
   }
 
-  console.log(token);
-
   const handleParams = (value) => {
     setSearchParams({ status: value });
     setValue(value);

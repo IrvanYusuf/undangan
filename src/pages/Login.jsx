@@ -26,7 +26,6 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(formLogin);
     try {
       const response = await fetch(`${apiAuth}/login`, {
         method: "POST",
