@@ -3,15 +3,13 @@ import Logo from "../../assets/logo.png";
 import { ChevronLeft, LayoutGrid, LogOut, Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useWindowWidth } from "@react-hook/window-size";
-import { useAuth } from "@/context/authContext";
 
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const onlyWidth = useWindowWidth();
-  const { setAuthToken } = useAuth();
 
   const handleLogout = () => {
-    setAuthToken(null);
+    localStorage.removeItem("token");
   };
 
   useEffect(() => {
